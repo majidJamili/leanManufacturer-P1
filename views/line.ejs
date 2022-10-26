@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate') %> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+    <h1>Production Line - 001 </h1>
+    <br>
+    <br>
+    <div class="border border-1 rounded">
+        <h4>Create Workstation</h4>
+
+        <form action="/workstations/new" class="validated-form" method="POST" novalidate>
+
+            <div    class="mb-1">
+                <label class="form-label" for="title">Enter Workstation Title: </label>
+                <input class ="form-control" type="text" name="workstation[title]" id="title" required>
+                <div class="valid-feedback">
+                    VALID INPUT
+                </div>            
+            </div>
+            <div class="mb-1">
+                <label class="form-label" for="tasks">Enter Workstation Tasks</label>
+                <input class ="form-control" type="text" name="workstation[tasks]" id="tasks" required>
+                <div class="valid-feedback">
+                    VALID INPUT
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-success">Submit</button>
+        </form>
+
+    </div>
+
+
+
+    <br>
+    <h1>All Workstations</h1>
+    <ul>
+        <% for(const workstation of workstations) { %>
+            <div class="card" style = "width: 18rem;">
+            <h5>Title: <%= workstation.title%></h5>
+            <p class="card-text">Tasks: <%= workstation.tasks %></p>
+            <a href="/workstations/<%= workstation._id %>" class="btn btn-success btn-sm">See Workstation</a>
+            <!-- <form action="" method="POST">
+                <button class="btn btn-danger">Delete</button>
+            </form> -->
+            <a href='/workstations/<%= workstation._id %>/edit' class="btn btn-info btn-sm">Edit</a>
+
+        </div>
+        <%}%>  
+    </ul>
+
+
+
+    
+</body>
+</html>

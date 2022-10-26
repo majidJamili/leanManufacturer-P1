@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate') %> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tasks</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="card">
+        <h5 class="card-header">EDIT<strong> <%= task.title%></strong></h5>
+        <div class="card-body">
+            <form action="/tasks/<%= task._id%>?_method=PUT" method="POST" class="validated-form" novalidate>
+                    <div >
+                        <label class ="form-label" for="time"><strong>EDIT TIME</strong></label>
+                        <input class="form-control" type="number" name="task[time]" id="time" placeholder="Task Title" value="<%=task.time%>">
+                    </div>
+                    <div>
+                        <label class="form-label" for="title"><strong>EDIT TITLE</strong></label>
+                        <input class="form-control" type="text" name="task[title]" value="<%=task.title.toUpperCase()%> ">
+                    </div>
+                    <div>
+                        <label class="form-label" for="types"><strong>EDIT TYPE</strong></label>
+                        <select class="form-select form-select-lg mb-2" name="task[types]" id="types">
+                            <% for (let type of types) {%>
+                                <option value="<%=type%>" <%= task.types === type ? 'selected':''%>><%=type.toUpperCase()%></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+                <div class="btn-group" role = "group" aria-label="Basic example">
+                        <button class="btn btn-success btn-sm"><strong>UPDATE</strong></button>
+                </form>
+                        <a href="/tasks/<%=task._id%> " class="btn btn-info btn-sm"><strong>TASK</strong></a>
+                </div>
+
+
+        </div>
+      </div>
+ 
+</body>
+</html>

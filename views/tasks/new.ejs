@@ -1,0 +1,96 @@
+<% layout('layouts/boilerplate') %> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head> 
+<body>
+    <h2> <strong>ADD  TASK</strong> </h2>
+    <br>
+    <% if(id===1371){ %> 
+    <div class="border border-1 rounded p-3 mb-2 bg-secondary text-white">
+        <form action="/tasks/new" class="validated-form" method="POST" novalidate>
+            
+            <div class="mb-1">
+                <label class = "form-label" for="title"> <strong>Enter Task Title:</strong></label>
+                <input class ="form-control" type="text" name="task[title]" id="title" placeholder="task title" required>
+                <div class="valid-feedback">Valid Input</div>                
+            </div>
+
+            <div class="mb-1">
+                <label class="form-label" for="time"> <strong>  Task Proces Time </strong></label>
+                <input class ="form-control" type="number" name="task[time]" id="time" placeholder="task process time" required>
+                <div class="valid-feedback">Valid Input</div>
+            </div>
+            <div class="mb-1">
+                <label class ="form-label" for="types"> <strong>Task Type </strong></label>
+                <select name="task[types]" id="types" class="form-select form-select-lg mb-2" required>
+                    <% for(let type of types) { %>
+                        <option class="text-secondary" value='<%=type%>'> <%=type%> </option>
+                    <% } %>  
+                </select>
+            </div>
+            <div class="mb-1">
+                <label class="form-label" for="precedence"><strong>Select Precedence Tasks</strong> </label>
+                <select class="form-select form-select-lg mb-2" name="task[precedence]" id="precedence"  multiple >
+                    <% for(let task of tasks) { %>                        
+                            <option value="<%= task._id%>"><%= (task.title) %> </option>
+                    <% } %>  
+                </select>
+            </div>
+            <button class="btn btn-success"><strong>SUBMIT</strong></button>
+        </form> 
+
+        
+        
+        <% }else{ %>
+
+            <form action="/workstations/<%=id%>/tasks" class="validated-form" method="POST" novalidate>
+            
+                <div class="mb-1">
+                    <label class = "form-label" for="title"> <strong>Enter Task Title:</strong></label>
+                    <input class ="form-control" type="text" name="task[title]" id="title" placeholder="task title" required>
+                    <div class="valid-feedback">Valid Input</div>                
+                </div>
+    
+                <div class="mb-1">
+                    <label class="form-label" for="time"> <strong>  Task Proces Time </strong></label>
+                    <input class ="form-control" type="number" name="task[time]" id="time" placeholder="task process time" required>
+                    <div class="valid-feedback">Valid Input</div>
+                </div>
+                <div class="mb-1">
+                    <label class ="form-label" for="types"> <strong>Task Type </strong></label>
+                    <select name="task[types]" id="types" class="form-select form-select-lg mb-2" required>
+                        <% for(let type of types) { %>
+                            <option class="text-secondary" value='<%=type%>'> <%=type%> </option>
+                        <% } %>  
+                    </select>
+                </div>
+                <div class="mb-1">
+                    <label class="form-label" for="precedence"><strong>Select Precedence Tasks</strong> </label>
+                    <select class="form-select form-select-lg mb-2" name="task[precedence]" id="precedence"  multiple>
+                        <% for(let task of tasks) { %>                        
+                                <option value="<%= task._id%>"><%= (task.title) %> </option>
+                        <% } %>  
+                    </select>
+                </div>
+                <button class="btn btn-success">Submit</button>
+            </form>
+        
+        
+
+        <% } %>   
+
+    </div>
+
+
+    
+</body>
+</html>

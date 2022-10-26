@@ -1,0 +1,703 @@
+
+body {
+    margin: 0;
+    font-family: 'Anek Gurmukhi', sans-serif;
+    display: flex;
+
+  }
+/* Style the button that is used to open and close the collapsible content */
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@500&family=Bebas+Neue&family=Maven+Pro:wght@600&family=Public+Sans:wght@100&family=Roboto:wght@700&family=Ubuntu:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&family=Inter:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@500&family=Bebas+Neue&family=Maven+Pro:wght@600&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@500&family=Bebas+Neue&family=Maven+Pro:wght@600&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@500&family=Bebas+Neue&family=Maven+Pro:wght@600&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 20px 20px 20px;
+    justify-content: space-between;    
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+/* .form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+} */
+
+/* Add styles to the form container */
+/* .form-container {
+  max-width: 320px;
+  padding: 10px;
+  background-color: white;
+} */
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: 'Public Sans', sans-serif;
+}
+
+.task-button{
+  position: relative;
+  color: #001233;
+  border: none;
+  opacity: 0.8;
+  cursor: pointer;
+  background-color:#ffffff ;
+
+}
+.task-button .material-symbols-outlined{
+  color: #107109; 
+  border: 1px solid  #107109; 
+  border-radius: 50%;
+
+}
+
+.workstation {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 10px 10px;
+  width: 310px;
+  height: auto;
+  
+
+}
+
+table th {
+  font-weight: normal;
+}
+
+.time-number {
+  margin: 15px;
+  position: relative;
+  margin: 25px 0 0 25px;
+
+  
+}
+.time-number-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  max-height: fit-content;
+
+
+  background-color: #2b2a2a;
+  font-family: 'Rationale', sans-serif;
+  color: #d00000;
+  font-size: 18px;
+  
+}
+
+
+
+.task-title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.task-title-container p {
+  letter-spacing: 0.2rem;
+}
+
+.workstation p:not(#description) {
+  text-transform: uppercase;
+}
+.workstation-title {
+  width: 100%;
+  height: fit-content;
+  background-color: #495057;
+  padding-bottom: 20px;
+
+
+
+
+}
+
+
+.workstation-title h4 {
+    height: 10px;
+    font-size: 16px;
+    margin: 10px 5px 10px 5px;
+    letter-spacing: 0.2rem;
+    color: #f9fdfd;
+    text-align: center;
+    text-transform: uppercase;
+}
+.workstation-title h6 {
+    height: 10px;
+    padding-top: 20px;
+
+    color: #bfc4c3;
+    text-align: left;
+   
+    text-transform: uppercase;
+}
+.workstation-title h3 {
+  height: 10px;
+  font-family: 'Rationale', sans-serif;
+  font-weight: bold;
+
+  color: #ffb703;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* .workstation-title table{
+    margin: ;
+} */
+.workstation-description {
+  text-align: center;
+}
+
+.workstation-container {
+  padding-top: 4px;
+  border: 2px solid;
+  border-color: #061a40;
+
+  border-radius: 15px;
+  width: 300;
+  display: flex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.workstation-container span {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.task {
+  display: flex;
+  justify-content: space-evenly;
+
+  margin: 0px 5px 5px 5px;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: #2b2a2a;
+  width: fit-content;
+  height: fit-content;
+
+  text-transform: uppercase;
+}
+.add-btn .material-symbols-outlined{
+   
+    
+    font-weight: bolder;
+    justify-content: center;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.task-type-value-adding {
+  width: 10px;
+  height: 10px;
+  background-color: #38b000;
+}
+.task-type-non-value-adding {
+    width: 10px;
+    height: 10px;
+    background-color: #ffb703;
+  }
+
+  .task-type-essential {
+    width: 10px;
+    height: 10px;
+    background-color: #3a86ff;
+  }
+
+  .task-type-allowed-wait {
+    width: 10px;
+    height: 10px;
+    background-color: #6a4c93;
+  }
+  .task-type-transport {
+    width: 10px;
+    height: 10px;
+    background-color: #e85d04;
+  }
+  .task-type-waste {
+    width: 10px;
+    height: 10px;
+    background-color: #d00000;
+  }
+
+  
+  
+.worksation-panel {
+
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+/* 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center; */
+}
+.workstation-info {
+  display: flex;
+  justify-content: left;
+  
+  border-radius: 5px;
+
+}
+.workstation-info .material-symbols-outlined {
+  color: black;
+}
+.workstation-info p {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: black;
+  font-weight: bold;
+}
+
+.workstation-info-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.workstation-graph {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+
+  /* display: flex;
+  flex-direction: row;
+  align-content: center;
+  height: auto;
+  flex-grow: 1; */
+}
+.graph {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-style: hidden;
+  background-color: #38b000;
+}
+.graph-title p {
+  letter-spacing: 0.2rem;
+}
+.material-symbols-outlined {
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.collapsible {
+    max-height: 100px;
+    text-align: center;    
+    background-color: rgb(28, 146, 81);
+    color: #e7e8ea;
+    cursor: pointer;
+    padding: 18px;
+    max-width: 310px;
+    border: none;    
+    outline: none;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .collapsible th{  
+
+  }
+  .collapsible:after {
+    content: '\02795'; 
+    font-size: 13px;
+    color: #001233;
+    float: right;
+  }
+  
+  .active:after {
+    content: "\2796"; 
+  }
+  .active, .collapsible:hover {
+    background-color: #323232;
+  }
+  
+  .content {
+    max-width: 310px;  
+    border: 1px solid black;  
+    display: none;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  .page-title{
+    width: 100%;
+    height: fit-content;
+    padding: 1em;
+
+  }
+  
+  .body-container{
+    display: grid;
+    gap:1px; 
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 25px;
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+   
+    
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* grid-template-columns: repeat(5, 0.5fr); */
+    gap: 10px;
+    grid-auto-rows: minmax(10px, auto);
+  
+  }
+  .workstation-container{
+    display: grid;
+    border: 1px solid rgb(211, 209, 209);
+
+    width: 400px;
+    height: 600px;
+
+
+  }
+  .title-container{
+    display: flex;
+    padding-top: 2ch;
+    padding-bottom: 0ch;
+    justify-content: center;
+    height: 100px;
+    width: fit-content; 
+    height: auto;
+
+    
+  }
+
+  nav{
+    background-color: #003049;
+
+  }
+  .task-container{
+    width: 100%;
+    min-height: 200px;
+    max-height: fit-content;
+    padding-bottom: 20px;
+    border: 1px solid #5f5f60;
+
+    
+  }
+  .graph-container{
+    display: grid;
+
+
+    width: auto;
+    height: auto;
+  }
+  .container {
+    display: flex;
+    align-items: flex-start;
+    align-items: center;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    block-size: fit-content;
+
+    grid-template-columns: auto auto auto auto;
+
+    border: 1px solid rgb(211, 209, 209);
+    background-color: rgb(242, 243, 242);
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+  }
+  .container-sm{
+    width: 200px;
+    border: 4px solid black;
+    background-color: blanchedalmond;
+    
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  .info-container{
+    height: fit-content;
+    justify-content: center;
+    font-size: 1.25em;
+
+    padding: 1rem;
+
+    color: rgb(88, 85, 85);
+    color: white;
+    background-color: rgb(80, 81, 80);
+    border: 1px solid rgb(71, 72, 71);
+    
+  }
+  
+  .draggable {
+    /* width: fit-content;
+    height: fit-content;
+    block-size: fit-content;
+    
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid rgb(71, 72, 71); */
+    cursor: move;
+  }
+  
+  .draggable.dragging {
+    opacity: .5;
+  }
+
+  /* Button used to open the contact form - fixed at the bottom of the page */
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Roboto:wght@700&display=swap");
+body {
+  font-family: "Kanit", sans-serif;
+}
+#body-post {
+  background-color: #008000;
+}
+
+.container-title-header h2 {
+  color: #001d3d;
+  font-family: "Roboto", sans-serif;
+  font-weight: bolder;
+}
+.container-title-header span {
+  color: #008000;
+}
+.form-container th {
+  color: #001d3d;
+  font-family: "Roboto", sans-serif;
+}
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  border: 3px solid #f1f1f1;
+  /* z-index: 9; */
+  z-index: 8;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* border: 2px grey solid; */
+  /* border-radius: 20px; */
+}
+
+/* Add styles to the form container */
+.container-header {
+  background-color: #555;
+  height: fit-content;
+  
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.container-footer {
+  height: fit-content;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.container-header .btn-close {
+  background-color: red;
+  opacity: 1;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.container-footer .btn-success {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  max-height: fit-content;
+  max-width: fit-content;
+}
+.form-container {
+  max-width: 320px;
+  padding: 10px;
+  background-color: white;
+
+  
+  /* padding-top: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  background-color: fff;
+  /* border-radius: 20px; */
+  /* color: black; */ 
+}
+
+/* Full-width input fields */
+.form-container input[type="text"],
+.form-container input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+/* .form-container .btn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+} */
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+  opacity: 1;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 0.75;
+}
+
+

@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate') %> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+    <div class="card">
+        <h5 class="card-header">Edit <%= workstation.title%> Details</h5>
+        <div class="card-body">
+                <form action="/workstations/<%= workstation._id%>?_method=PUT" method="POST" class="validated-form"  novalidate>
+                    <div class="mb-3">
+                        <label class = "form-label" for="title">Edit Workstation Name</label>
+                        <input class ="form-control" type="text" name="workstation[title]" id="title" placeholder="Workstation Title" value="<%=workstation.title%>" required>
+                    </div>
+                    <div  class="mb-3">
+                        <label class ="form-label" for="tasks">Edit Workstation Description</label>
+                        <br>
+                        <textarea class ="form-control" name="workstation[tasks]" id="tasks" cols="30" rows="10" placeholder="All Tasks" required><%=workstation.tasks%> </textarea>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-1 col-md-1">
+                                <button class="btn btn-success">UPDATE</button>
+                            </div>
+                            <div class="col-1 col-md-1">
+                                <a href="/workstations/<%= workstation._id%>" class="btn btn-warning">BACK</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+        </div>
+      </div>
+
+
+   
+</body>
+</html>

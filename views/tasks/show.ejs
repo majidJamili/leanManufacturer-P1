@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate') %> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h3> <strong><%=task.title%> </strong></h3>
+    <div class="container border rounded">
+        <ul>
+            <li><strong>TITLE</strong> <%= task.title %>  </li>
+            <li> <strong>PROCESS TIME (MINUTES)</strong> <%= task.time %></li>
+            <li>           
+                <!-- write a class for this guy      -->
+                <div class="">
+                    <strong>TYPE </strong> <%= task.types %>
+                </div>
+            </li>
+            <li><strong>PRECEDENCE TASKS:</strong>
+            <ul>
+                <% for (let pretask of task.precedence) {%>
+                    <div class="card" style="width: 18rem;">                      
+                        <div class="card-header bg-warning text-dark"> 
+                            <div class="d-flex flex-row">
+                                <div class="d-flex flex-row-reverse">
+                                    <div class="p-2">
+                                        <form action="/tasks/<%=pretask._id%>?_method=DELETE" method="POST">                                                   
+                                            <button class="btn btn-close"></button>
+                                        </form> 
+                                    </div>    
+                                </div>
+                                <div class="p-2">
+                                     <strong><%=  pretask.title %></strong>                                        
+                                </div>     
+                            </div>
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title"> <%= pretask.types %> </h5>
+                          <p class="card-text"></p>
+                          <a href="/tasks/<%=pretask._id%>" class="btn btn-success btn-sm">OPEN</a>
+                          <a class="btn btn-secondary btn-sm" href="/tasks/<%=pretask._id%>/edit ">EDIT</a>
+
+
+
+                        </div>
+                    </div>
+                <% } %>                
+            </ul>
+            
+            </li>    
+
+                            
+           
+            
+            
+        </ul>
+    </div>
+  
+    <div class="container border rounded">
+        <div class="btn-group" role ="group" aria-label="Basic example">
+            <div >
+                <a class="btn btn-secondary" href="/tasks/<%=task._id%>/edit ">EDIT</a>
+            </div>
+            <div >
+                <form  action="/tasks/<%= task.id%>?_method=DELETE" method="POST">
+                    <button class = "btn btn-danger">DELETE</button>
+                </form>
+            </div>        
+            <div>
+                <% if(task.workstations){%> 
+                    <%  console.log(task.workstations._id) %> 
+                    <a class="btn btn-warning" href="/workstations/<%=task.workstations._id%> ">BACK</a>
+                <%}else{%>
+                    <a class="btn btn-warning" href="/tasks">BACK</a>
+                <% } %>  
+            </div>
+    </div>
+    </div>  
+    
+</body>
+</html>

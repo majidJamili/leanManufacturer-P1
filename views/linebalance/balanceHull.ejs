@@ -1,0 +1,428 @@
+
+
+<% layout('layouts/boilerplate') %> 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/style/forms-style.css"> -->
+
+    <link rel="stylesheet" href="/style/style.css">
+    <!-- <link rel="stylesheet" href="/style/workstation-container-style.css"> -->
+    <script type="text/javascript" src="/script/popupForms.js"></script>
+
+    <title>Line Balancing Board</title>
+</head>
+<body>
+    <div class="page-title">
+        <h1> <strong>Line-balancing Hull</strong></h1>
+    </div>
+     
+
+
+
+
+
+    <form action="/linebalance/balance" method="POST" onsubmit="updateContainerContent()">
+        <div class="wrapper">
+            <% for(let workstation of workstations){ %>     
+
+
+
+
+
+
+
+                <div class="workstation">    
+                    <div class="workstation-title">
+                        <h4><strong><%= workstation.title %> </strong></h4>                
+                        <h6><%=JSON.stringify(workstation._id).substring(1,12)%></h6>
+                        
+                    </div>
+                    <% var wsProcessTime = 0 %>                  
+                    <% for(let task of workstation.taskList){%>      
+                        <% wsProcessTime += task.time %>                        
+                    <%}%> 
+                    <div class="workstation-title">
+                        <table>
+                            <tr>
+                                <th>
+                                    <h3>  
+                                        <span class="material-symbols-outlined">
+                                            timer
+                                        </span>
+                                    </h3>
+                                </th>
+                                <th>
+                                    <h3><%=wsProcessTime%></h3>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <button type="button" class="collapsible">                                       
+                        <table>
+                            <tr>
+                                <th>
+                                    TASKS
+                                </th>
+                                <th>
+                                    <span class="material-symbols-outlined">
+                                        task_alt
+                                    </span>
+                                </th>
+                            </tr>
+                        </table>
+                    </button>
+                    <div class="task-container">
+                                <div id="<%=workstation._id%>">
+                                    <div title="<%=workstation._id%>" class="container" id="<%= workstation._id%>">
+                                        <span class="material-symbols-outlined">
+                                            drag_indicator
+                                        </span>            
+                                        <% for(let task of workstation.taskList){ %> 
+                                            <div class="draggable task" draggable="true" id="<%=task._id%>">
+                                                <table>
+                                                    <tr>                                                
+                                                        <th><%= task.title %></th>
+                                                        <th><div class="task-type-value-adding"></div></th>
+                                                    </tr>
+                                                </table>                                                
+                                            </div>                               
+                                        <% } %>    
+                                    </div>
+                                </div>                   
+
+                        <div class="add-btn">
+                            <button class="task-button" type="button" onclick="openForm()">
+                                  <span class="material-symbols-outlined">
+                                    add
+                                  </span>
+                            </button>
+                        
+
+
+                        </div>                     
+                    </div> 
+                    <button type="button" class="collapsible">
+                            
+                        <table>
+                            <tr>
+                                <th>
+                                  STUDY
+                                </th>    
+                                <th>
+                                    <span class="material-symbols-outlined">
+                                        folder
+                                    </span>
+                                </th>
+                            </tr>
+                        </table>
+            
+                    </button>
+                    <div class="content">
+                        <div class="workstation-panel">
+                            <div class="workstation-info">
+                              <table>
+                                <tr>
+                                  <th>
+                                    <span class="material-symbols-outlined">
+                                      timer
+                                    </span>
+                                  </th>
+                                  <th>
+                                    <p>Cycle Time</p>
+                                  </th>
+                                  <th>
+                                    <p><strong> <%=wsProcessTime %> </strong></p>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    <span class="material-symbols-outlined">
+                                      badge
+                                    </span>
+                                  </th>
+                                  <th>
+                                    <p>Operator</p>
+                                  </th>
+                                  <th>
+                                    <p><strong>2</strong></p>
+                                  </th>
+                                </tr>
+                      
+                                <tr>
+                                  <th>
+                                    <span class="material-symbols-outlined">
+                                      desktop_windows
+                                    </span>
+                                  </th>
+                                  <th>
+                                    <p>
+                                      Machines
+                                    </p>
+                                  </th>
+                                  <th>
+                                    <p>
+                                      <strong> XR3500 | PR5600 | TPE4508R</strong>
+                                    </p>
+                                  </th>
+                                </tr>
+                              </table>
+                            </div>    
+                    </div>
+                    </div>
+                    <button type="button" class="collapsible">
+                        <table>
+                            <tr>
+                                <th>
+                                    MONITORING
+                                </th>
+            
+                                <th>
+                                    <span class="material-symbols-outlined">
+                                        analytics
+                                    </span>
+                                </th>
+                            </tr>
+                        </table>
+                    </button>        
+                    <div class="content">
+                        <div class="workstation-panel">                
+                            <div class="workstation-graph" id="<%=workstation._id%>"></div>
+                        </div>
+                    </div> 
+                </div>
+            
+            <% } %>  
+    
+        </div>
+    </form>
+
+
+
+
+<!--     
+    <div class="wrapper">
+
+        <div class="workstation">
+            <div class="workstation-title">
+                <strong><h4>Clean Workstation</h4> </strong>
+                <th><h6>TLWPLT1I-001CL</h6></th>
+            </div>
+
+            <div class="workstation-title">
+              <table>
+                <tr>
+                  <th>
+                    <h3>
+                      <span class="material-symbols-outlined">
+                        timer
+                      </span>
+                    </h3>
+                  </th>
+
+                  <th>
+                    <h3>1,452.06</h3>
+                  </th>
+                </tr>
+                
+              </table>
+              <br>
+                
+                  
+                
+            </div>
+            <button type="button" class="collapsible">                
+                <table>
+                    <tr>
+                        <th>
+                            Tasks
+                        </th>
+                        <th>
+                            <span class="material-symbols-outlined">
+                                task_alt
+                            </span>
+                        </th>
+                    </tr>
+                </table>
+                </button>
+                <div class="content">
+                    <div class="workstation-container">
+                        <span class="material-symbols-outlined">
+                          drag_indicator
+                        </span>
+                        <div class="task">
+                          <table>
+                            <tr>
+                              <th>Prep-clean</th>
+                              <th><div class="task-type-value-adding"></div></th>
+                            </tr>
+                          </table>
+                        </div>
+                        </div>
+                      </div>
+                      
+                      
+
+
+                      <div class="add-btn">
+                        <button class="task-button" type="submit" onclick="openForm()">
+                              <span class="material-symbols-outlined">
+                                add
+                              </span>
+                        </button>
+                      </div>
+
+
+
+                      <div class="form-popup" id="myForm">
+                        <form action="/action_page.php" class="form-container">
+                          <h2><strong>ADD NEW TASK</strong></h2>
+                      
+                          <div class="mb-1">
+                            <label class = "form-container" for="title"> <strong>Task Title:</strong></label>
+                            <input class ="form-container" type="text" name="task[title]" id="title" placeholder="task title" required>
+                        </div>
+            
+                        <div class="mb-1">
+                            <label class="form-container" for="time"> <strong>  Task Proces Time </strong></label>
+                            <input class ="form-container" type="number" name="task[time]" id="time" placeholder="task process time" required>
+                        </div>
+                        <div class="mb-1">
+                            <label class ="form-container" for="types"> <strong>Task Type </strong></label>
+                            <select name="task[types]" id="types" class="form-select form-select-lg mb-2" required>
+                              <option value="id-01">Type 1</option>
+                              <option value="id-02">Type 2</option>
+                              <option value="id-03">Type 3</option>
+       
+                            </select>
+                        </div>
+                        <div class="mb-1">
+                            <label class="form-container" for="precedence"><strong>Select Precedence Tasks</strong> </label>
+                            <select class="form-select form-select-lg mb-2" name="task[precedence]" id="precedence"  multiple>
+                              <option value="id-01">Option 1</option>
+                              <option value="id-02">Option 2</option>
+                              <option value="id-03">Option 3</option>
+          
+                            </select>
+                        </div>
+                      
+                          <button type="submit" class="btn">Login</button>
+                          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                        </form>
+                      </div>
+        
+                </div>
+                <button type="button" class="collapsible">
+                    
+                    <table>
+                        <tr>
+                            <th>
+                              Study
+                            </th>    
+                            <th>
+                                <span class="material-symbols-outlined">
+                                    folder
+                                </span>
+                            </th>
+                        </tr>
+                    </table>
+        
+                </button>
+                <div class="content">
+                    <div class="workstation-panel">
+                        <div class="workstation-info">
+                          <table>
+                            <tr>
+                              <th>
+                                <span class="material-symbols-outlined">
+                                  timer
+                                </span>
+                              </th>
+                              <th>
+                                <p>Cycle Time</p>
+                              </th>
+                              <th>
+                                <p><strong> 125 </strong></p>
+                              </th>
+                            </tr>
+                            <tr>
+                              <th>
+                                <span class="material-symbols-outlined">
+                                  badge
+                                </span>
+                              </th>
+                              <th>
+                                <p>Operator</p>
+                              </th>
+                              <th>
+                                <p><strong>2</strong></p>
+                              </th>
+                            </tr>
+                  
+                            <tr>
+                              <th>
+                                <span class="material-symbols-outlined">
+                                  desktop_windows
+                                </span>
+                              </th>
+                              <th>
+                                <p>
+                                  Machines
+                                </p>
+                              </th>
+                              <th>
+                                <p>
+                                  <strong> XR3500 | PR5600 | TPE4508R</strong>
+                                </p>
+                              </th>
+                            </tr>
+                          </table>
+                        </div>    
+                </div>
+                </div>
+                <button link = "/" type="button" class="collapsible">
+                    <table>
+                        <tr>
+                            <th>
+                                Monitoring
+                            </th>
+        
+                            <th>
+                                <span class="material-symbols-outlined">
+                                    analytics
+                                </span>
+                            </th>
+                        </tr>
+                    </table>
+                </button>
+        
+                <div class="content">
+                    <div class="workstation-panel">                
+                        <div class="workstation-graph">
+     
+                            <div class="graph"></div>
+                          </div>
+                        </div>
+                    </div>    
+        </div>
+    </div>     -->
+    
+        <script>                    
+          const workstations = <%-JSON.stringify(workstations)%>      
+        </script>   
+        <script src="/script/popupForms.js"></script>
+        <script type="text/javascript" src="/script/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/script/workstationContainer.js"></script>
+        <script>
+                const workstations = <%- JSON.stringify(workstations) %>               
+        </script>
+        <script src="/script/doghnutChart.js"></script>
+
+    </body>
+</html>

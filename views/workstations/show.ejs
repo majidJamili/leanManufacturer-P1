@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate') %> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= workstation.title %></title>
+<!--     
+  <embed src="/Mega_Fix_Quote14226.pdf" width="500" height="375" type="application/pdf">
+  <iframe  width="1500" height="500" src="https://www.youtube.com/watch?v=e_QemRf3CRE&list=RDe_QemRf3CRE&start_radio=1" frameborder="10" class="border rounded"></iframe> -->
+
+    <div class="card w-75">
+        <div class="card-body">
+          <h1 class="card-title"><%= workstation.title %></h1>
+          <p class="card-text">
+            <h3>Workstation Tasks: </h3>
+            <ul>       
+                <% for (let task of workstation.taskList){ %>
+
+                  <div class="card" style="width: 18rem;">                      
+                    <div class="card-header bg-success text-dark"> 
+                        <div class="d-flex flex-row">
+                            <div class="d-flex flex-row-reverse">
+                                <div class="p-2">
+                                    <form action="/tasks/<%=task._id%>?_method=DELETE" method="POST">                                                   
+                                        <button class="btn btn-close btn-sm"></button>
+                                    </form> 
+                                </div>    
+                            </div>
+                            <div class="p-2">
+                                 <strong><%=  task.title %></strong>                                        
+                            </div>     
+                        </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"> <%= task.types %> </h5>
+                      <p class="card-text"></p>
+                      <a href="/tasks/<%=task._id%>" class="btn btn-success btn-sm">OPEN</a>
+                      <a class="btn btn-secondary btn-sm" href="/tasks/<%=task._id%>/edit ">EDIT</a>
+                    </div>
+                <% } %>  
+            </ul>  
+          </p>
+          <div class="container border rounded">
+            <div class="btn-group" role = "group" aria-label="Basic example">
+              <div >
+                <a class= "btn btn-success" href='/workstations/<%= workstation._id %>/tasks/new'><strong>ADD TASK</strong></a>
+              </div>
+              <div >
+                  <a class= "btn btn-secondary"href='/workstations/<%= workstation._id %>/edit'>EDIT</a>
+              </div>
+              <div >
+                <form action="/workstations/<%= workstation._id%>?_method=DELETE" method="POST">
+                  <button class="btn btn-danger">REMOVE</button>
+                </form>                
+              </div>
+              <div >
+                <a class = "btn btn-warning" href="/line"> BACK</a>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+</html>
